@@ -20,9 +20,7 @@ RUN curl -SLO "http://terraria.org/server/terraria-server-${TERRARIA_VERSION}.zi
 
 RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.Linux.v${TMOD_VERSION}.zip" &&\
     unzip tModLoader.Linux.v*.zip &&\\
-    chmod u+x tModLoaderServer* Terraria TerrariaServer.* &&\
-    mv TerrariaServer.bin.x86_64 tModLoaderServer.bin.x86_64 &&\
-    rm *.txt *.jar
+    chmod u+x tModLoaderServer* tModLoaderServer.bin.*
 
 FROM frolvlad/alpine-glibc:alpine-3.10
 
