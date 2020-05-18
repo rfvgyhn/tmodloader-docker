@@ -2,7 +2,7 @@
 
 [tModLoader] dedicated server  
 
-Terraria server 1.4.0.2 with tModLoader v0.11.7.1
+Terraria server 1.4.0.1 with tModLoader v0.11.7
 
 Supports graceful shutdown (saves when the container receives a stop command) and also supports autosaving every 10 minutes (configurable, see [Environment Variables] below).
 
