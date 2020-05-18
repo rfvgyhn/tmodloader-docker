@@ -1,0 +1,18 @@
+language: python
+
+services:
+  - docker
+
+jobs:
+    include:
+      - stage: Build and Push Docker Image
+        script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t tmodloader-docker .
+        - docker images
+        - docker tag tmodloader-docker $DOCKER_USERNAME/tmodloader-docker
+        - docker push $DOCKER_USERNAME/tmodloader-docker
+      - stage: Run Docker Image
+        script:
+        - docker run -d --name Terraria -p 7777:7777 -v /etc/localtime:/etc/localtime:ro $DOCKER_USERNAME/tmodloader-docker
+        - docker ps -a
