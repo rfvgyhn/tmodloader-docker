@@ -11,7 +11,7 @@ WORKDIR /terraria-server
 
 RUN cp /usr/lib/libMonoPosixHelper.so .
 
-RUN curl -SLO "https://terraria.org/system/dedicated_servers/archives/000/000/036/original/terraria-server-${TERRARIA_VERSION}.zip" &&\
+RUN curl -SLO "https://www.terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-${TERRARIA_VERSION}.zip" &&\
     unzip terraria-server-*.zip &&\
     rm terraria-server-*.zip &&\
     cp --verbose -a "${TERRARIA_VERSION}/Linux/." . &&\
