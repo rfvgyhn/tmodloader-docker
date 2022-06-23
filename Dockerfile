@@ -16,7 +16,7 @@ RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-se
     rm terraria-server-*.zip &&\
     cp --verbose -a "${TERRARIA_VERSION}/Linux/." . &&\
     rm -rf "${TERRARIA_VERSION}" &&\
-    rm TerrariaServer.bin.x86 TerrariaServer.exe
+    rm TerrariaServer.bin.x86_64 TerrariaServer.exe
 
 RUN curl -SL "https://github.com/tModLoader/tModLoader/archive/refs/tags/v${TMOD_VERSION}.tar.gz" | tar -xvz &&\
     rm -r lib tModLoader.bin.x86 tModLoaderServer.bin.x86 &&\
