@@ -11,14 +11,15 @@ WORKDIR /terraria-server
 
 RUN cp /usr/lib/libMonoPosixHelper.so .
 
-RUN curl -SLO "http://terraria.org/server/terraria-server-${TERRARIA_VERSION}.zip" &&\
+RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-server-${TERRARIA_VERSION}.zip" &&\
     unzip terraria-server-*.zip &&\
     rm terraria-server-*.zip &&\
     cp --verbose -a "${TERRARIA_VERSION}/Linux/." . &&\
     rm -rf "${TERRARIA_VERSION}" &&\
     rm TerrariaServer.exe
 
-RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.zip" | unzip tModLoader.zip &&\
+RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.zip" &&\ 
+    unzip tModLoader*.zip &&\
     chmod u+x Build/start-tModLoaderServer.sh &&\
     chmod u+x Build/start-tModLoader.sh
 
