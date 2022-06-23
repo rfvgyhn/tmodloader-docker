@@ -2,7 +2,7 @@
 
 [tModLoader] dedicated server  
 
-Terraria server 1.4.3.6 with tModLoader v0.11.8.8.
+Terraria server 1.4.3.6 with tModLoader v2022.05.103.34.
 
 Supports graceful shutdown (saves when the container receives a stop command) and also supports autosaving every 10 minutes (configurable, see [Environment Variables] below).
 
@@ -75,7 +75,7 @@ TMOD_IDLE_CHECK_OFFSET   | 0              | This allows for sub-minute resolutio
 [tModLoader]: https://www.tmodloader.net/
 [wiki]: https://terraria.gamepedia.com/Server#Server_config_file
 [commands]: https://terraria.gamepedia.com/Server#List_of_console_commands
-[tMod Version]: https://img.shields.io/badge/tMod-0.11.8.8-blue
+[tMod Version]: https://img.shields.io/badge/tMod-2022.05.103.34-blue
 [Terraria Version]: https://img.shields.io/badge/Terraria-1.4.3.6-blue
 [Docker Stars]: https://img.shields.io/docker/stars/rfvgyhn/tmodloader.svg
 [Docker Pulls]: https://img.shields.io/docker/pulls/rfvgyhn/tmodloader.svg
