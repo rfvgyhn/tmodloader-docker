@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:alpine-3.10 as build
+FROM frolvlad/alpine-glibc as build
 
 ARG TMOD_VERSION=2022.05.103.34
 ARG TERRARIA_VERSION=1436
@@ -22,7 +22,7 @@ RUN curl -SL "https://github.com/tModLoader/tModLoader/archive/refs/tags/v${TMOD
     rm -r lib tModLoader.bin.x86 tModLoaderServer.bin.x86 &&\
     chmod u+x tModLoaderServer*
 
-FROM frolvlad/alpine-glibc:alpine-3.10
+FROM frolvlad/alpine-glibc
 
 WORKDIR /terraria-server
 COPY --from=build /terraria-server ./
