@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.16 AS build
 
-ARG TMOD_VERSION=0.11.8.8
-ARG TERRARIA_VERSION=1436
+ARG TMOD_VERSION=0.11.7.8
+ARG TERRARIA_VERSION=1353
 
 RUN apk update &&\
     apk add --no-cache --virtual build curl unzip &&\
