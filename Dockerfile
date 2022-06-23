@@ -28,6 +28,7 @@ WORKDIR /terraria-server
 COPY --from=build /terraria-server ./
 
 RUN apk update &&\
+    apk add --no-cache bash &&\
     apk add --no-cache procps tmux
 RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
