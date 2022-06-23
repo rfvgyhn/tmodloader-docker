@@ -75,8 +75,8 @@ TMOD_IDLE_CHECK_OFFSET   | 0              | This allows for sub-minute resolutio
 [tModLoader]: https://www.tmodloader.net/
 [wiki]: https://terraria.gamepedia.com/Server#Server_config_file
 [commands]: https://terraria.gamepedia.com/Server#List_of_console_commands
-[tMod Version]: https://img.shields.io/badge/tMod-0.11.7.8-blue
-[Terraria Version]: https://img.shields.io/badge/Terraria-1.3.5.3-blue
+[tMod Version]: https://img.shields.io/badge/tMod-0.11.8.8-blue
+[Terraria Version]: https://img.shields.io/badge/Terraria-1.4.3.6-blue
 [Docker Stars]: https://img.shields.io/docker/stars/rfvgyhn/tmodloader.svg
 [Docker Pulls]: https://img.shields.io/docker/pulls/rfvgyhn/tmodloader.svg
 [default]: https://github.com/Rfvgyhn/tmodloader-docker/blob/master/config.txt
