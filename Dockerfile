@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc as build
 
-ARG TMOD_VERSION=2022.05.103.34
+ARG TMOD_VERSION=0.11.8.9
 ARG TERRARIA_VERSION=1436
 
 RUN apk update &&\
@@ -16,9 +16,10 @@ RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-se
     rm terraria-server-*.zip &&\
     cp --verbose -a "${TERRARIA_VERSION}/Linux/." . &&\
     rm -rf "${TERRARIA_VERSION}" &&\
-    rm TerrariaServer.bin.x86_64 TerrariaServer.exe
+    rm TerrariaServer.exe
 
-RUN curl -SL "https://github.com/tModLoader/tModLoader/archive/refs/tags/v${TMOD_VERSION}.tar.gz" | tar -xvz &&\
+RUN curl -SL "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.Linux.v${TMOD_VERSION}.tar.gz" | tar -xvz &&\
+    rm -r lib tModLoader.bin.x86 tModLoaderServer.bin.x86 &&\
     chmod u+x tModLoaderServer*
 
 FROM frolvlad/alpine-glibc
