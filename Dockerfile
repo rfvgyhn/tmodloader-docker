@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.16 as build
 
-ARG TMOD_VERSION=2022.05.103.34
+ARG TMOD_VERSION=2022.5.103.34
 ARG TERRARIA_VERSION=1436
 
 RUN apk update &&\
