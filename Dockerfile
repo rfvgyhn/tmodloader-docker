@@ -20,7 +20,8 @@ RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-se
 
 RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.zip" &&\ 
     unzip tModLoader*.zip &&\
-    chmod u+x start-tModLoader*
+    chmod u+x start-tModLoader* &&\
+    find . -name "*.sh" -exec chmod u+x {} \;
 
 FROM frolvlad/alpine-glibc:alpine-3.16
 
