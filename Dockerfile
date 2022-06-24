@@ -37,11 +37,11 @@ RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
 COPY handle-idle.sh /usr/local/bin/handle-idle
 
-RUN apt install software-properties-common &&\
+RUN apt -y install software-properties-common &&\
     add-apt-repository multiverse &&\
     dpkg --add-architecture i386 &&\
-    apt update &&\
-    apt install lib32gcc-s1 steamcmd
+    apt -y update &&\
+    apt -y install lib32gcc-s1 steamcmd
  
 RUN mv /DedicatedServerUtils/DedicatedServerUtils\Setup_tModLoaderServer.sh ..
 
