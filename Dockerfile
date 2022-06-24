@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:alpine-3.16 as build
+FROM steamcmd/steamcmd:alpine-3 as build
 
 ARG TMOD_VERSION=2022.5.103.34
 ARG TERRARIA_VERSION=1436
@@ -23,7 +23,7 @@ RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMO
     chmod u+x start-tModLoader* &&\
     find . -name "*.sh" -exec chmod u+x {} \;
 
-FROM frolvlad/alpine-glibc:alpine-3.16
+FROM steamcmd/steamcmd:alpine-3
 
 WORKDIR /terraria-server
 COPY --from=build /terraria-server ./
