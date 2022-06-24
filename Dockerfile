@@ -42,6 +42,8 @@ RUN apt install software-properties-common &&\
     dpkg --add-architecture i386 &&\
     apt update &&\
     apt install lib32gcc-s1 steamcmd
+ 
+RUN mv /DedicatedServerUtils/DedicatedServerUtils\Setup_tModLoaderServer.sh ..
 
 EXPOSE 7777
 ENV TMOD_SHUTDOWN_MSG="Shutting down!"
