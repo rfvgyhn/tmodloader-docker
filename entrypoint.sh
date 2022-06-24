@@ -14,9 +14,15 @@ function shutdown() {
   rm $pipe
 }
 
-server="/terraria-server/start-tModLoaderServer.sh"
+setup="/terraria-server/start-tModLoaderServer.sh"
+server="/terraria-server/start-tModLoader.sh"
 
 if [ "$1" = "setup" ]; then
+  $setup
+else
+  trap shutdown SIGTERM SIGINT
+  
+if [ "$1" = "server" ]; then
   $server
 else
   trap shutdown SIGTERM SIGINT
