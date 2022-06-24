@@ -19,10 +19,7 @@ server="/terraria-server/start-tModLoader.sh"
 
 if [ "$1" = "setup" ]; then
   $setup
-else
-  trap shutdown SIGTERM SIGINT
-  
-if [ "$1" = "server" ]; then
+elif [ "$1" = "server" ]; then
   $server
 else
   trap shutdown SIGTERM SIGINT
