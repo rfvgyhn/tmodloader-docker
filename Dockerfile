@@ -36,8 +36,6 @@ RUN apt update &&\
 RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
 COPY handle-idle.sh /usr/local/bin/handle-idle
- 
-RUN mv /DedicatedServerUtils/DedicatedServerUtils\Setup_tModLoaderServer.sh ..
 
 EXPOSE 7777
 ENV TMOD_SHUTDOWN_MSG="Shutting down!"
