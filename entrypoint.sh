@@ -20,6 +20,7 @@ server="/terraria-server/Build/start-tModLoader.sh"
 loadMods="/terraria-server/Build/Setup_tModLoaderServer.sh"
 
 if [ "$1" = "setup" ]; then
+  mv /terraria-server/Build/DedicatedServerUtils/Setup_tModLoaderServer.sh /terraria-server/Build
   $loadMods
   $server
 else
