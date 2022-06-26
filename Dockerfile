@@ -1,18 +1,16 @@
-FROM steamcmd/steamcmd:ubuntu as build
+FROM docker pull frolvlad/alpine-glibc as build
 
 ARG TMOD_VERSION=2022.04.62.6
 ARG TERRARIA_VERSION=1436
 
-RUN apt update
-RUN apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-RUN apt-add-repository -y 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-RUN apt install -y mono-complete 
-RUN apt install -y curl unzip
+RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
+    cert-sync /etc/ssl/certs/ca-certificates.crt && \
+    apk del .build-dependencies
 
 WORKDIR /terraria-server
 
-# RUN cp /usr/lib/libMonoPosixHelper.so .
+RUN cp /usr/lib/libMonoPosixHelper.so .
 
 RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-server-${TERRARIA_VERSION}.zip" &&\
     unzip terraria-server-*.zip &&\
@@ -26,13 +24,13 @@ RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMO
     chmod u+x Build/start-tModLoaderServer.sh &&\
     chmod u+x Build/start-tModLoader.sh
 
-FROM bitnami/dotnet:3.1-debian-10
+FROM steamcmd/steamcmd:alpine-3
 
 WORKDIR /terraria-server
 COPY --from=build /terraria-server ./
 
-RUN apt update &&\
-    apt -y install procps cron tmux
+RUN apk update &&\
+    apk add --no-cache procps tmux
 RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
 COPY handle-idle.sh /usr/local/bin/handle-idle
