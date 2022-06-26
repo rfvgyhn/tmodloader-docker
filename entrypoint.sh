@@ -17,11 +17,11 @@ function shutdown() {
 }
 
 server="/terraria-server/Build/start-tModLoader.sh"
-loadMods="/terraria-server/Build/DedicatedServerUtils\Setup_tModLoaderServer.sh"
+loadMods="/terraria-server/Build/Setup_tModLoaderServer.sh"
 
 if [ "$1" = "setup" ]; then
+  $loadMods
   $server
-  #$loadMods
 else
   trap shutdown SIGTERM SIGINT
 
