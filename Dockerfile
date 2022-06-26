@@ -1,4 +1,4 @@
-FROM ubuntu as build
+FROM steamcmd/steamcmd:ubuntu as build
 
 ARG TMOD_VERSION=2022.04.62.6
 ARG TERRARIA_VERSION=1436
@@ -36,12 +36,6 @@ RUN apt update &&\
 RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
 COPY handle-idle.sh /usr/local/bin/handle-idle
-
-RUN apt -y install software-properties-common &&\
-    add-apt-repository multiverse &&\
-    dpkg --add-architecture i386 &&\
-    apt -y update &&\
-    apt -y install lib32gcc-s1 steamcmd
  
 RUN mv /DedicatedServerUtils/DedicatedServerUtils\Setup_tModLoaderServer.sh ..
 
