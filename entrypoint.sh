@@ -21,7 +21,7 @@ loadMods="/terraria-server/Build/DedicatedServerUtils\Setup_tModLoaderServer.sh"
 
 if [ "$1" = "setup" ]; then
   $server
-  $loadMods
+  #$loadMods
 else
   trap shutdown SIGTERM SIGINT
 
