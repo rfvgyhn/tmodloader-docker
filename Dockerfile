@@ -1,4 +1,4 @@
-FROM docker pull frolvlad/alpine-glibc as build
+FROM frolvlad/alpine-glibc as build
 
 ARG TMOD_VERSION=2022.04.62.6
 ARG TERRARIA_VERSION=1436
@@ -22,14 +22,25 @@ RUN curl -SLO "https://terraria.org/api/download/pc-dedicated-server/terraria-se
     rm -rf "${TERRARIA_VERSION}" &&\
     rm TerrariaServer.exe
 
-RUN curl -SLO "https://github.com/tModLoader/tModLoader/releases/download/v${TMOD_VERSION}/tModLoader.zip" &&\
-    unzip tModLoader.zip &&\
-    chmod u+x Build/start-tModLoaderServer.sh &&\
-    chmod u+x Build/start-tModLoader.sh
 
-FROM steamcmd/steamcmd:alpine-3
+FROM steamcmd/steamcmd:alpine-3 as tmod
 
-WORKDIR /terraria-server
+WORKDIR /tmod-util
+
+COPY Setup_tModLoaderServer.sh install.txt ./
+RUN chmod u+x Setup_tModLoaderServer.sh &&\
+    ./ Setup_tModLoaderServer.sh
+    
+WORKDIR ../tmod
+RUN chmod u+x start-tModLoader*
+
+
+FROM frolvlad/alpine-glibc 
+
+WORKDIR ./tModLoader
+COPY --from=tmod /tModLoader ./
+
+WORKDIR ../terraria-server
 COPY --from=build /terraria-server ./
 
 RUN apk update &&\
